@@ -1,5 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -20,37 +21,25 @@ public class BaseTestClass {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\geckodriver\\geckodriver.exe");
-        baseUrl = "http://newtours.demoaut.com";
+        baseUrl = "http://us.asos.com/women";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-    public void fillRegistrationForm(CredentialsForRegistration regCredentials) {
-        driver.findElement(By.name("firstName")).clear();
-        driver.findElement(By.name("firstName")).sendKeys(regCredentials.getFirstName());
-        driver.findElement(By.name("lastName")).clear();
-        driver.findElement(By.name("lastName")).sendKeys(regCredentials.getLastName());
-        driver.findElement(By.name("phone")).clear();
-        driver.findElement(By.name("phone")).sendKeys(regCredentials.getPhoneNumber());
-        driver.findElement(By.id("userName")).clear();
-        driver.findElement(By.id("userName")).sendKeys(regCredentials.getContactEmail());
-        driver.findElement(By.name("address1")).clear();
-        driver.findElement(By.name("address1")).sendKeys(regCredentials.getAddress());
-        driver.findElement(By.name("postalCode")).clear();
-        driver.findElement(By.name("postalCode")).sendKeys(regCredentials.getPostalCode());
-        driver.findElement(By.id("email")).clear();
-        driver.findElement(By.id("email")).sendKeys(regCredentials.getUserEmail());
-        driver.findElement(By.name("password")).clear();
-        driver.findElement(By.name("password")).sendKeys(regCredentials.getUserPassword());
-        driver.findElement(By.name("confirmPassword")).clear();
-        driver.findElement(By.name("confirmPassword")).sendKeys(regCredentials.getPasswordConfirmation());
+    public void userSignIn(CredentialsForSignIn credsForSignIn) {
+        driver.findElement(By.id("EmailAddress")).isEnabled();;
+        driver.findElement(By.id("EmailAddress")).sendKeys(credsForSignIn.getUserEmail());
+        driver.findElement(By.id("Password")).isEnabled();
+        driver.findElement(By.id("Password")).clear();
+        driver.findElement(By.id("Password")).sendKeys(credsForSignIn.getUserPassword());
     }
+    public void submitLogIn() {
+       WebElement elementLogIn = driver.findElement(By.id("signin"));
+       elementLogIn.click();
+   }
 
-    public void submitRegistration() {
-        driver.findElement(By.name("register")).click();
-    }
-
-    public void goToRegistrationForm() {
-        driver.findElement(By.linkText("REGISTER")).click();
+    public void goToLogInForm() {
+        WebElement element = driver.findElement(By.partialLinkText("Sign In"));
+        element.click();
     }
 
     public void openMainPage() {
@@ -59,7 +48,7 @@ public class BaseTestClass {
 
     @AfterClass
     public void tearDown() throws Exception {
-        driver.quit();
+        driver.close();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
