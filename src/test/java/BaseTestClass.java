@@ -2,6 +2,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
@@ -44,6 +45,11 @@ public class BaseTestClass {
 
     public void openMainPage() {
         driver.get(baseUrl);
+    }
+
+    public void logOut() {
+        WebElement element = driver.findElement(By.className("sign-out"));
+        element.click();
     }
 
     @AfterClass

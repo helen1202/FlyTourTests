@@ -11,10 +11,11 @@ public class UserSignIn extends BaseTestClass {
     @Test
     public void testUserSignIn() throws Exception {
         openMainPage();
-       goToLogInForm();
-      CredentialsForSignIn creds = new CredentialsForSignIn("helenkuz1202@gmail.com", "ELeNa0912M");
-       userSignIn(creds);
-      submitLogIn();
+        goToLogInForm();
+        CredentialsForSignIn creds = new CredentialsForSignIn("helenkuz1202@gmail.com", "ELeNa0912M");
+        userSignIn(creds);
+        submitLogIn();
+      logOut();
 
     }
 

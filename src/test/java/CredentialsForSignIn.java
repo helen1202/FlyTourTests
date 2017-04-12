@@ -1,6 +1,6 @@
 public class CredentialsForSignIn {
-    private static String userEmail;
-    private static String userPassword;
+    private  String userEmail;
+    private  String userPassword;
 
     public CredentialsForSignIn() {
     }
