@@ -1,3 +1,4 @@
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 /**
@@ -9,10 +10,22 @@ public class UserSignIn extends BaseTest {
     public void testUserSignIn() throws Exception {
         openMainPage();
         goToLogInForm();
-        CredentialsForSignIn creds = new CredentialsForSignIn("helenkuz1202@gmail.com", "ELeNa0912M");
-        userSignIn(creds);
+        UserData creds = new UserData("helenkuz1202@gmail.com", "ELeNa0912M");
+        fillSignInForm(creds);
         submitLogIn();
     }
 
+    @Test
+    public void testAddAddress() throws Exception {
+
+         goToAccLink();
+         goToEditAddNewAddress();
+         gotoAddAddressForm();
+         UserData creds = new UserData("Chicago", "St. Main, 25, app. 9", "380959294710", "80999");
+         fillAddAddressForm(creds);
+         submitNewAddress();
+    }
 }
+
+
 

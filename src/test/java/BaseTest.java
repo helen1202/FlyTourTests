@@ -1,7 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
@@ -77,17 +76,29 @@ public class BaseTest {
         }
     }
 
-    public void userSignIn(CredentialsForSignIn credsForSignIn) {
-        driver.findElement(By.id("EmailAddress")).isEnabled();;
+    public void fillSignInForm(UserData credsForSignIn) {
+        driver.findElement(By.id("EmailAddress")).isEnabled();
         driver.findElement(By.id("EmailAddress")).sendKeys(credsForSignIn.getUserEmail());
         driver.findElement(By.id("Password")).isEnabled();
         driver.findElement(By.id("Password")).clear();
         driver.findElement(By.id("Password")).sendKeys(credsForSignIn.getUserPassword());
     }
+    public void fillAddAddressForm(UserData credsForSignIn) {
+        driver.findElement(By.id("TelephoneDaytime")).isEnabled();
+        driver.findElement(By.id("TelephoneDaytime")).sendKeys(credsForSignIn.getUserPhoneNumber());
+        driver.findElement(By.id("Address1")).isEnabled();
+        driver.findElement(By.id("Address1")).sendKeys(credsForSignIn.getUserAddress1());
+        driver.findElement(By.id("Locality")).isEnabled();
+        driver.findElement(By.id("Locality")).sendKeys(credsForSignIn.getUserCity());
+        driver.findElement(By.id("PostalCode")).isEnabled();
+        driver.findElement(By.id("PostalCode")).sendKeys(credsForSignIn.getUserCityZipCode());
+
+    }
+
     public void submitLogIn() {
-       driver.findElement(By.id("signin")).click();
-       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-   }
+        driver.findElement(By.id("signin")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
 
     public void goToLogInForm() {
         driver.findElement(By.partialLinkText("Sign In")).click();
@@ -108,5 +119,23 @@ public class BaseTest {
     public void userLogOut() {
         driver.findElement(By.linkText("sign out")).click();
     }
+
+    public void goToAccLink() {
+        driver.findElement(By.linkText("My Account")).click();
+    }
+
+    public void goToEditAddNewAddress() {
+        driver.findElement(By.id("_ctl0_ContentBody_btnEditAddress")).click();
+       // driver.findElement(By.partialLinkText("edit")).click();
+    }
+    public void gotoAddAddressForm() {
+        driver.get("https://my.asos.com/address/add?checkout=false");
+        // driver.findElement(By.xpath("//div[4]/div/a")).click();
+    }
+    public void submitNewAddress() {
+        driver.findElement(By.id("submit-address")).click();
+    }
+
+
 
 }
