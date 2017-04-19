@@ -1,6 +1,9 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -17,10 +20,17 @@ public class BaseTestClass {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    private FirefoxProfile profile;
 
     @BeforeClass
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
+
+        DesiredCapabilities cap = DesiredCapabilities.firefox();
+        profile = new FirefoxProfile();
+        profile.setAcceptUntrustedCertificates(true);
+        cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        cap.setCapability(FirefoxDriver.PROFILE, profile);
+        driver = new FirefoxDriver(profile);
         System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\geckodriver\\geckodriver.exe");
         baseUrl = "http://us.asos.com/women";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -45,6 +55,20 @@ public class BaseTestClass {
 
     public void openMainPage() {
         driver.get(baseUrl);
+    }
+
+    public void goToMarketPlace () {
+        WebElement element1 = driver.findElement(By.className("close"));
+        element1.click();
+        WebElement element2 = driver.findElement(By.linkText("https://marketplace.asos.com/?CTARef=Global%20Nav"));
+        element2.click();
+    }
+
+    public void goToShopWomenDresses () {
+        WebElement element1 = driver.findElement(By.linkText("http://us.asos.com/women/"));
+        element1.click();
+        WebElement element2 = driver.findElement(By.partialLinkText("dresses"));
+        element2.click();
     }
 
     public void logOut() {

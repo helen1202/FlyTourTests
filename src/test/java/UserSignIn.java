@@ -15,8 +15,6 @@ public class UserSignIn extends BaseTestClass {
         CredentialsForSignIn creds = new CredentialsForSignIn("helenkuz1202@gmail.com", "ELeNa0912M");
         userSignIn(creds);
         submitLogIn();
-      logOut();
-
     }
 
 }
