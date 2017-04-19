@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 /**
  * Created by ekuznetsova on 4/10/2017.
  */
-public class UserSignIn extends BaseTestClass {
+public class UserSignIn extends BaseTest {
 
     @Test
     public void testUserSignIn() throws Exception {
