@@ -18,6 +18,7 @@ import static org.junit.Assert.fail;
 public class BaseTestClass {
     private WebDriver driver;
     private String baseUrl;
+    private WebElement element;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     private FirefoxProfile profile;
@@ -32,7 +33,7 @@ public class BaseTestClass {
         cap.setCapability(FirefoxDriver.PROFILE, profile);
         driver = new FirefoxDriver(profile);
         System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\geckodriver\\geckodriver.exe");
-        baseUrl = "http://us.asos.com/women";
+        baseUrl = "http://us.asos.com";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -44,36 +45,28 @@ public class BaseTestClass {
         driver.findElement(By.id("Password")).sendKeys(credsForSignIn.getUserPassword());
     }
     public void submitLogIn() {
-       WebElement elementLogIn = driver.findElement(By.id("signin"));
-       elementLogIn.click();
+       driver.findElement(By.id("signin")).click();
+       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
    }
 
     public void goToLogInForm() {
-        WebElement element = driver.findElement(By.partialLinkText("Sign In"));
-        element.click();
+        driver.findElement(By.partialLinkText("Sign In")).click();
     }
 
     public void openMainPage() {
         driver.get(baseUrl);
     }
 
-    public void goToMarketPlace () {
-        WebElement element1 = driver.findElement(By.className("close"));
-        element1.click();
-        WebElement element2 = driver.findElement(By.linkText("https://marketplace.asos.com/?CTARef=Global%20Nav"));
-        element2.click();
+    public void goToMarketPlaceVintageBoutique() {
+        driver.findElement(By.className("close")).click();
+        driver.findElement(By.linkText("Marketplace")).click();
+        driver.findElement(By.cssSelector("li.boutiques > a.tab > span")).click();
+        driver.findElement(By.cssSelector("li.boutiques > a.tab > span")).click();
+        driver.findElement(By.linkText("Vintage")).click();
     }
 
-    public void goToShopWomenDresses () {
-        WebElement element1 = driver.findElement(By.linkText("http://us.asos.com/women/"));
-        element1.click();
-        WebElement element2 = driver.findElement(By.partialLinkText("dresses"));
-        element2.click();
-    }
-
-    public void logOut() {
-        WebElement element = driver.findElement(By.className("sign-out"));
-        element.click();
+    public void userLogOut() {
+        driver.findElement(By.linkText("sign out")).click();
     }
 
     @AfterClass
