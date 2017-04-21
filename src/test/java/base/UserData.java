@@ -1,3 +1,5 @@
+package base;
+
 public class UserData {
     private  String userEmail;
     private  String userPassword;

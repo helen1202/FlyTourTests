@@ -1,3 +1,5 @@
+package base;
+
 import org.testng.annotations.Test;
 
 /**
@@ -5,7 +7,7 @@ import org.testng.annotations.Test;
  */
 public class MarketPlaceShopForUnRegUsers extends BaseTest {
 
-
+@Test
     public void testMarketPlaceShop() throws Exception {
         openMainPage();
         goToMarketPlaceVintageBoutique();

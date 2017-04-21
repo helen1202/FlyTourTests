@@ -1,4 +1,5 @@
-import org.testng.annotations.AfterTest;
+package base;
+
 import org.testng.annotations.Test;
 
 /**
@@ -11,7 +12,7 @@ public class UserSignIn extends BaseTest {
         openMainPage();
         goToLogInForm();
         UserData creds = new UserData("helenkuz1202@gmail.com", "ELeNa0912M");
-        fillSignInForm(creds);
+        appManager.fillSignInForm(creds);
         submitLogIn();
     }
 
