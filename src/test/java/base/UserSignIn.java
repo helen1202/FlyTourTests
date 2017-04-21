@@ -9,22 +9,22 @@ public class UserSignIn extends BaseTest {
 
     @Test
     public void testUserSignIn() throws Exception {
-        openMainPage();
-        goToLogInForm();
+        appManager.openMainPage();
+        appManager.goToLogInForm();
         UserData creds = new UserData("helenkuz1202@gmail.com", "ELeNa0912M");
         appManager.fillSignInForm(creds);
-        submitLogIn();
+        appManager.submitLogIn();
     }
 
     @Test
     public void testAddAddress() throws Exception {
 
-         goToAccLink();
-         goToEditAddNewAddress();
-         gotoAddAddressForm();
+         appManager.goToAccLink();
+         appManager.goToEditAddNewAddress();
+         appManager.gotoAddAddressForm();
          UserData creds = new UserData("Chicago", "St. Main, 25, app. 9", "380959294710", "80999");
-         fillAddAddressForm(creds);
-         submitNewAddress();
+         appManager.fillAddAddressForm(creds);
+         appManager.submitNewAddress();
     }
 }
 

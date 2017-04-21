@@ -9,8 +9,8 @@ public class MarketPlaceShopForUnRegUsers extends BaseTest {
 
 @Test
     public void testMarketPlaceShop() throws Exception {
-        openMainPage();
-        goToMarketPlaceVintageBoutique();
+        appManager.openMainPage();
+        appManager.goToMarketPlaceVintageBoutique();
     }
 
 }
