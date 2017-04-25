@@ -6,15 +6,16 @@ import org.testng.annotations.BeforeTest;
 public class BaseTest {
 
 
-    protected AppManager appManager;
+    protected AppManager app;
 
     @BeforeTest
     public void setUp() throws Exception {
-        appManager = new AppManager();
+        app = new AppManager();
+        app.userSignIn();
     }
 
     @AfterTest
     public void tearDown() throws Exception {
-        appManager.stop();
+        app.stop();
     }
 }

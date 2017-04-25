@@ -27,6 +27,15 @@ public class AppManager {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
+    public void userSignIn() {
+        openMainPage();
+        goToLogInForm();
+        UserData creds = new UserData("helenkuz1202@gmail.com", "ELeNa0912M");
+        fillSignInForm(creds);
+        submitLogIn();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
     public void fillSignInForm(UserData credsForSignIn) {
         driver.findElement(By.id("EmailAddress")).isEnabled();
         driver.findElement(By.id("EmailAddress")).sendKeys(credsForSignIn.getUserEmail());
@@ -55,6 +64,7 @@ public class AppManager {
 
     public void goToLogInForm() {
         driver.findElement(By.partialLinkText("Sign In")).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     public void openMainPage() {
@@ -62,7 +72,7 @@ public class AppManager {
     }
 
     public void goToMarketPlaceVintageBoutique() {
-        driver.findElement(By.className("close")).click();
+        //driver.findElement(By.className("close")).click();
         driver.findElement(By.linkText("Marketplace")).click();
         driver.findElement(By.cssSelector("li.boutiques > a.tab > span")).click();
         driver.findElement(By.cssSelector("li.boutiques > a.tab > span")).click();
@@ -76,12 +86,12 @@ public class AppManager {
 
     public void goToEditAddNewAddress() {
         driver.findElement(By.id("_ctl0_ContentBody_btnEditAddress")).click();
-       // appManager.getDriver().findElement(By.partialLinkText("edit")).click();
+       // app.getDriver().findElement(By.partialLinkText("edit")).click();
     }
 
     public void gotoAddAddressForm() {
         driver.get("https://my.asos.com/address/add?checkout=false");
-        // appManager.getDriver().findElement(By.xpath("//div[4]/div/a")).click();
+        // app.getDriver().findElement(By.xpath("//div[4]/div/a")).click();
     }
 
     public void submitNewAddress() {
@@ -89,6 +99,7 @@ public class AppManager {
     }
 
     public void userLogOut() {
+
         driver.findElement(By.linkText("sign out")).click();
     }
 
