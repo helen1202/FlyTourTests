@@ -1,11 +1,11 @@
-package base;
+package application;
 import org.testng.annotations.Test;
 
 public class MarketPlaceShop extends BaseTest {
 
 @Test
     public void testMarketPlaceShop() throws Exception {
-        app.goToMarketPlaceVintageBoutique();
+        app.marketPlaceShopHelper.goToMarketPlaceVintageBoutique();
     }
 
 }

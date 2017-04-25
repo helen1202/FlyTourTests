@@ -1,4 +1,4 @@
-package base;
+package application;
 
 public class UserData {
     private  String userEmail;

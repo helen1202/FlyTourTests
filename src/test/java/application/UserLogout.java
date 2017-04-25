@@ -1,4 +1,4 @@
-package base;
+package application;
 
 import org.testng.annotations.Test;
 
@@ -6,7 +6,7 @@ public class UserLogout extends BaseTest {
 
     @Test
     public void testUserLogOut() throws Exception {
-        app.userLogOut();
+        app.navigationHelper.userLogOut();
     }
 }
 

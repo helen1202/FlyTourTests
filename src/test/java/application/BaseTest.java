@@ -1,5 +1,5 @@
-package base;
-import application.AppManager;
+package application;
+import base.AppManager;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -11,7 +11,7 @@ public class BaseTest {
     @BeforeTest
     public void setUp() throws Exception {
         app = new AppManager();
-        app.userSignIn();
+        app.userProfileEditHelper.userSignIn();
     }
 
     @AfterTest
