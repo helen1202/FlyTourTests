@@ -1,5 +1,5 @@
-package base;
-import application.UserData;
+package testHelpers;
+import dataAndTests.UserData;
 import org.openqa.selenium.By;
 import java.util.concurrent.TimeUnit;
 
@@ -10,11 +10,11 @@ public class UserProfileEditHelper extends BaseHelper {
     }
 
     public void userSignIn() {
-        manager.navigationHelper.openMainPage();
-        manager.navigationHelper.goToLogInForm();
+        manager.getNavigationHelper().openMainPage();
+        manager.getNavigationHelper().goToLogInForm();
         UserData creds = new UserData("helenkuz1202@gmail.com", "ELeNa0912M");
-        manager.userProfileEditHelper.fillSignInForm(creds);
-        manager.userProfileEditHelper.submitLogIn();
+        manager.getUserProfileEditHelper().fillSignInForm(creds);
+        manager.getUserProfileEditHelper().submitLogIn();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 

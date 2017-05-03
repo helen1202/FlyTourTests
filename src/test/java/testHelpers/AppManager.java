@@ -1,4 +1,4 @@
-package base;
+package testHelpers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -11,9 +11,9 @@ public class AppManager {
     public WebDriver driver;
     public  String baseUrl;
     public  FirefoxProfile profile;
-    public NavigationHelper navigationHelper;
-    public UserProfileEditHelper userProfileEditHelper;
-    public MarketPlaceShopHelper marketPlaceShopHelper;
+    private NavigationHelper navigationHelper;
+    private UserProfileEditHelper userProfileEditHelper;
+    private MarketPlaceShopHelper marketPlaceShopHelper;
 
     public AppManager() {
         DesiredCapabilities cap = DesiredCapabilities.firefox();
@@ -25,12 +25,32 @@ public class AppManager {
         cap.setCapability(FirefoxDriver.PROFILE, profile);
         driver = new FirefoxDriver(profile);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        navigationHelper = new NavigationHelper(this);
-        marketPlaceShopHelper = new MarketPlaceShopHelper(this);
-        userProfileEditHelper = new UserProfileEditHelper(this);
     }
 
     public void stop() {
        driver.close();
     }
+
+    public MarketPlaceShopHelper getMarketPlaceShopHelper (){
+        if ( marketPlaceShopHelper == null) {
+            marketPlaceShopHelper = new MarketPlaceShopHelper(this);
+        }
+        return marketPlaceShopHelper;
+    }
+
+    public NavigationHelper getNavigationHelper (){
+        if ( navigationHelper == null) {
+            navigationHelper = new NavigationHelper(this);
+        }
+        return navigationHelper;
+    }
+
+    public UserProfileEditHelper getUserProfileEditHelper (){
+        if ( userProfileEditHelper == null) {
+            userProfileEditHelper = new UserProfileEditHelper(this);
+        }
+        return userProfileEditHelper;
+    }
 }
+
+

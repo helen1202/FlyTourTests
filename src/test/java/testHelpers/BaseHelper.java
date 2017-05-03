@@ -1,4 +1,4 @@
-package base;
+package testHelpers;
 
 import org.openqa.selenium.*;
 

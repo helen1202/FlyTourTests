@@ -1,4 +1,4 @@
-package application;
+package dataAndTests;
 
 public class UserData {
     private  String userEmail;
