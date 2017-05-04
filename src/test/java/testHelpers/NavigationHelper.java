@@ -21,7 +21,8 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void goToLogInForm() {
-        driver.findElement(By.partialLinkText("Sign In")).click();
+
+       driver.findElement(By.partialLinkText("Sign In")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 

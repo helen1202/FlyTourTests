@@ -18,7 +18,7 @@ public class AppManager {
     public AppManager() {
         DesiredCapabilities cap = DesiredCapabilities.firefox();
         baseUrl = "http://us.asos.com";
-        System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\geckodriver\\geckodriver.exe");
+        //System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\geckodriver\\geckodriver.exe");
         profile = new FirefoxProfile();
         profile.setAcceptUntrustedCertificates(true);
         cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
