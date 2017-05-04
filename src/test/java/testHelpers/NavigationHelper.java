@@ -12,7 +12,7 @@ public class NavigationHelper extends BaseHelper {
         driver.get(manager.baseUrl);
     }
 
-    public void gotoAddAddressForm() {
+    public void gotoAddEditAddressForm() {
         driver.get("https://my.asos.com/address/add?checkout=false");
     }
 

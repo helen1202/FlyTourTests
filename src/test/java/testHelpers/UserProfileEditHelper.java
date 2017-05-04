@@ -43,4 +43,9 @@ public class UserProfileEditHelper extends BaseHelper {
     public void submitNewAddress() {
         click(By.id("submit-address"));
     }
+
+    public void deleteAddress () {
+        click(By.xpath("//*[@id=\"content\"]/div[5]/div[3]/div[5]/form/div/input[2]"));
+    }
+
 }

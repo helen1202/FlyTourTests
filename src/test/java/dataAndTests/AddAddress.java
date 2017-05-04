@@ -7,7 +7,7 @@ public class AddAddress extends BaseTest {
 
          app.getNavigationHelper().goToAccLink();
          app.getUserProfileEditHelper().goToEditAddNewAddress();
-         app.getNavigationHelper().gotoAddAddressForm();
+         app.getNavigationHelper().gotoAddEditAddressForm();
          UserData creds = new UserData("San Diego", "St. Main, 25, app. 9", "380967859961", "77999");
          app.getUserProfileEditHelper().fillAddAddressForm(creds);
          app.getUserProfileEditHelper().submitNewAddress();
