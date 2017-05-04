@@ -10,6 +10,7 @@ public class UserProfileEditHelper extends BaseHelper {
     }
 
     public void userSignIn() {
+        driver.manage().window().maximize();
         manager.getNavigationHelper().openMainPage();
         manager.getNavigationHelper().goToLogInForm();
         UserData creds = new UserData("helenkuz1202@gmail.com", "ELeNa0912M");
@@ -19,36 +20,27 @@ public class UserProfileEditHelper extends BaseHelper {
     }
 
     public void fillSignInForm(UserData credsForSignIn) {
-        driver.findElement(By.id("EmailAddress")).isEnabled();
-        driver.findElement(By.id("EmailAddress")).sendKeys(credsForSignIn.getUserEmail());
-        driver.findElement(By.id("Password")).isEnabled();
-        driver.findElement(By.id("Password")).clear();
-        driver.findElement(By.id("Password")).sendKeys(credsForSignIn.getUserPassword());
+        type(By.id("EmailAddress"), credsForSignIn.getUserEmail());
+        type(By.id("Password"), credsForSignIn.getUserPassword());
     }
 
     public void fillAddAddressForm(UserData credsForSignIn) {
-        driver.findElement(By.id("TelephoneDaytime")).isEnabled();
-        driver.findElement(By.id("TelephoneDaytime")).sendKeys(credsForSignIn.getUserPhoneNumber());
-        driver.findElement(By.id("Address1")).isEnabled();
-        driver.findElement(By.id("Address1")).sendKeys(credsForSignIn.getUserAddress1());
-        driver.findElement(By.id("Locality")).isEnabled();
-        driver.findElement(By.id("Locality")).sendKeys(credsForSignIn.getUserCity());
-        driver.findElement(By.id("PostalCode")).isEnabled();
-        driver.findElement(By.id("PostalCode")).sendKeys(credsForSignIn.getUserCityZipCode());
-
+        type(By.id("TelephoneDaytime"),credsForSignIn.getUserPhoneNumber());
+        type(By.id("Address1"),credsForSignIn.getUserAddress1());
+        type(By.id("Locality"),credsForSignIn.getUserCity());
+        type(By.id("PostalCode"),credsForSignIn.getUserCityZipCode());
     }
 
     public void submitLogIn() {
-        driver.findElement(By.id("signin")).click();
+        click(By.id("signin"));
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     public void goToEditAddNewAddress() {
-        driver.findElement(By.id("_ctl0_ContentBody_btnEditAddress")).click();
-       // app.getDriver().findElement(By.partialLinkText("edit")).click();
+        click(By.id("_ctl0_ContentBody_btnEditAddress"));
     }
 
     public void submitNewAddress() {
-        driver.findElement(By.id("submit-address")).click();
+        click(By.id("submit-address"));
     }
 }

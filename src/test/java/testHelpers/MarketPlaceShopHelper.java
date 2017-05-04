@@ -8,10 +8,9 @@ public class MarketPlaceShopHelper extends BaseHelper {
     }
 
     public void goToMarketPlaceVintageBoutique() {
-        driver.findElement(By.linkText("Marketplace")).click();
-        driver.findElement(By.cssSelector("li.boutiques > a.tab > span")).click();
-        driver.findElement(By.cssSelector("li.boutiques > a.tab > span")).click();
-        driver.findElement(By.linkText("Vintage Boutiques")).click();
-
+        click(By.linkText("Marketplace"));
+        click(By.cssSelector("li.boutiques > a.tab > span"));
+        click(By.cssSelector("li.boutiques > a.tab > span"));
+        click(By.linkText("Vintage Boutiques"));
     }
 }

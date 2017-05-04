@@ -28,7 +28,7 @@ public class AppManager {
     }
 
     public void stop() {
-       driver.close();
+       driver.quit();
     }
 
     public MarketPlaceShopHelper getMarketPlaceShopHelper (){

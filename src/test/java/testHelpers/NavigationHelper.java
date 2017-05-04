@@ -17,16 +17,15 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void goToAccLink() {
-        driver.findElement(By.linkText("My Account")).click();
+        click(By.linkText("My Account"));
     }
 
     public void goToLogInForm() {
-
-       driver.findElement(By.partialLinkText("Sign In")).click();
+        click(By.partialLinkText("Sign In"));
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     public void userLogOut() {
-        driver.findElement(By.linkText("sign out")).click();
+        click(By.linkText("sign out"));
     }
 }
