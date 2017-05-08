@@ -28,4 +28,6 @@ public class NavigationHelper extends BaseHelper {
     public void userLogOut() {
         click(By.linkText("sign out"));
     }
+
+    public void acceptAlert() {driver.switchTo().alert().accept();}
 }

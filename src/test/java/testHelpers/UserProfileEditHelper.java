@@ -1,6 +1,10 @@
 package testHelpers;
 import dataAndTests.UserData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class UserProfileEditHelper extends BaseHelper {
@@ -36,7 +40,7 @@ public class UserProfileEditHelper extends BaseHelper {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-    public void goToEditAddNewAddress() {
+    public void goToAddressBook() {
         click(By.id("_ctl0_ContentBody_btnEditAddress"));
     }
 
@@ -48,4 +52,14 @@ public class UserProfileEditHelper extends BaseHelper {
         click(By.xpath("//*[@id=\"content\"]/div[5]/div[3]/div[5]/form/div/input[2]"));
     }
 
+    public List<UserData> getUserAddress() {
+        List <UserData> userData = new ArrayList<UserData>();
+        List <WebElement> userAddresses = driver.findElements(By.xpath(" .//*[@id='content']/div[3]/div/table/tbody"));
+        for (WebElement userAddress:userAddresses) {
+          UserData userDataSearch =  new UserData();
+            userDataSearch.
+            userData.add(userDataSearch);
+        }
+        return userData;
+    }
 }
