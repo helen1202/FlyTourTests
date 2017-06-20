@@ -54,13 +54,10 @@ public class UserProfileEditHelper extends BaseHelper {
 
     public List<UserData> getUserAddress() {
         List <UserData> userData = new ArrayList<UserData>();
-        //*[@class='featured-box']//*[text()='Testing']
-        List <WebElement> userAddresses = driver.findElements(By.xpath(" .//*[@id='content']//[text () = 'Elena Kuznetsova']"));
+        List <WebElement> userAddresses = driver.findElements(By.cssSelector("span[id*='FullCustomerName']"));
         for (WebElement userAddress:userAddresses) {
-          // http://www.guru99.com/xpath-selenium.html
-            
             UserData userDataSearch =  new UserData();
-            userDataSearch.
+            userDataSearch.getUserAddress1(); // на 24:45 видео
             userData.add(userDataSearch);
         }
         return userData;

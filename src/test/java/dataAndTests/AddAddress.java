@@ -7,10 +7,11 @@ public class AddAddress extends BaseTest {
 
     @Test
     public void testAddAddress() throws Exception {
-        // save old state
-  List<UserData> oldList =  app.getUserProfileEditHelper().getUserAddress();
+        // CHECKING: save old state
+    List<UserData> oldList =  app.getUserProfileEditHelper().getUserAddress();
+        System.out.println(oldList);
 
-         // actions
+         //CHECKING: actions
          app.getNavigationHelper().goToAccLink();
          app.getUserProfileEditHelper().goToAddressBook();
          app.getNavigationHelper().gotoAddEditAddressForm();
@@ -18,12 +19,12 @@ public class AddAddress extends BaseTest {
          app.getUserProfileEditHelper().fillAddAddressForm(creds);
          app.getUserProfileEditHelper().submitNewAddress();
 
-        //save new state
+        //CHECKING: save new state
        List<UserData> newList =  app.getUserProfileEditHelper().getUserAddress();
 
 
 
-          // compare states
+          // CHECKING: compare states
       assertEquals(newList.size(),oldList.size()+1);
     }
 }
