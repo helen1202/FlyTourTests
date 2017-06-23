@@ -43,22 +43,23 @@ public class UserProfileEditHelper extends BaseHelper {
     public void goToAddressBook() {
         click(By.id("_ctl0_ContentBody_btnEditAddress"));
     }
-
     public void submitNewAddress() {
         click(By.id("submit-address"));
     }
-
     public void deleteAddress () {
         click(By.xpath("//*[@id=\"content\"]/div[5]/div[3]/div[5]/form/div/input[2]"));
     }
 
     public List<UserData> getUserAddress() {
+        // пока пустой лист инфы о юзере
         List <UserData> userData = new ArrayList<UserData>();
+        // заполняем лист вэб элементами
         List <WebElement> userAddresses = driver.findElements(By.cssSelector("span[id*='FullCustomerName']"));
+        // проходим по каждому элементу, по каждому адресу юзера (выполнить что-то для каждого эл-та)
         for (WebElement userAddress:userAddresses) {
-            UserData userDataSearch =  new UserData();
+            UserData userDataSearch =  new UserData();//
             userDataSearch.getUserAddress1(); // на 24:45 видео
-            userData.add(userDataSearch);
+            userData.add(userDataSearch);//добавить созданный объект в список
         }
         return userData;
     }

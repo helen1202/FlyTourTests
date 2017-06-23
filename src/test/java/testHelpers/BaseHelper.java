@@ -2,7 +2,7 @@ package testHelpers;
 
 import org.openqa.selenium.*;
 
-//нельзя создать экземплярабстрактногокласса
+//нельзя создать экземпляр абстрактного класса
 public abstract class BaseHelper {
 
     protected WebDriver driver;
